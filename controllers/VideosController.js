@@ -3,7 +3,7 @@ const Videos = require('../models/Videos');
 
 module.exports = {
     async index(request, response) {
-        const videos = await Videos.find();
+        const videos = await Videos.find().sort('name');
         return response.json(videos);
     },
     async store(request, response) {
