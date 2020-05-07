@@ -8,5 +8,5 @@ routes.post('/rates', RateController.store);
 routes.delete('/rates/:id', RateController.delete);
 routes.get('/videos', VideosController.index);
 routes.post('/videos', VideosController.store);
-
+routes.delete('/videos/:id', RateController.delete);
 module.exports = routes;

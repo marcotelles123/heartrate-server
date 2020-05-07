@@ -26,5 +26,14 @@ module.exports = {
         } catch (e) {
             response.json(e);
         }
-    }
+    },
+    async delete(request, response) {
+        const rates = await Videos.findByIdAndRemove(request.params.id, function (err, output) {
+            if (err) {
+                return next(err);
+            }
+            
+            response.send(output === 1 ? { msg: "success" } : { msg: "error" });
+        });
+    },
 };
