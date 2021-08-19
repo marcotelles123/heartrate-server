@@ -4,6 +4,7 @@ const Rate = require('../models/Rate');
 module.exports = {
     async index(request, response) {
         const rates = await Rate.find().sort({ date: 'desc' });
+        console.log(JSON.stringify(rates));
         return response.json(rates);
     },
 
@@ -19,13 +20,14 @@ module.exports = {
 
     async store(request, response) {
         const { rates, obs } = request.body;
-
+        
         try {
+            console.log(obs);
             let user = null;
             let rate = await Rate.create({
                 rates,
                 date: Date.now(),
-                obs,
+                obs: obs,
             }, function (err, result) {
                 if (err) {
                     // it failed
