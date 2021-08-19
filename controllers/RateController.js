@@ -18,13 +18,14 @@ module.exports = {
     },
 
     async store(request, response) {
-        const { rates, date } = request.body;
+        const { rates, obs } = request.body;
 
         try {
             let user = null;
             let rate = await Rate.create({
                 rates,
                 date: Date.now(),
+                obs,
             }, function (err, result) {
                 if (err) {
                     // it failed
