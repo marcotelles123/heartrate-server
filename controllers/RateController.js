@@ -22,7 +22,7 @@ module.exports = {
         const { rates, obs } = request.body;
         
         try {
-            console.log(obs);
+           
             let user = null;
             let rate = await Rate.create({
                 rates,
@@ -32,6 +32,7 @@ module.exports = {
                 if (err) {
                     // it failed
                     response.statusCode = 500;
+                    console.log(err);
                     response.send(err);
                 } else {
                     response.json(result)
