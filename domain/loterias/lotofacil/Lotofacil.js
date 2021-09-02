@@ -27,8 +27,7 @@ function comparehits(mydrawnumbers, dbResult) {
     }
     let result = dbResult[0]; 
     let lotterydrawnumbers = result.NumbersDraw.split(",");
-    lotterydrawnumbers.forEach(element => {
-        let lotteryNumber = parseInt(element);
+    lotterydrawnumbers.forEach(lotteryNumber => {
         if (mydrawnumbers.includes(lotteryNumber)){
             console.log(lotteryNumber);
             hits.push(lotteryNumber);

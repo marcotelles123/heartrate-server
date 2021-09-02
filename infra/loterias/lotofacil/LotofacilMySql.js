@@ -15,7 +15,6 @@ const connection = mysql.createConnection({
 
 module.exports = {
     async getDrawsByConcourseNumber(concourseNumber, lotteryKind, callback) {
-        if (err) throw err;
         var sqlQuery = sql.query('SELECT NumbersDraw, ConcourseDate, ConcourseNumber FROM blog9895_loterias.lotteryconcourse where concourseNumber = '
             + concourseNumber + ' and lotteryKind = ' + lotteryKind + ' LIMIT 1', (err, rows) => {
                 if (err) throw err;
@@ -26,7 +25,7 @@ module.exports = {
         console.log('Connected to MySQL Server!');
     },
     async getDrawsLastConcourse(lotteryKind, callback) {
-        var sqlQuery = sql.query('SELECT NumbersDraw, ConcourseDate, ConcourseNumber FROM blog9895_loterias.lotteryconcourse where lotteryKind = ' + lotteryKind + ' order by id desc  LIMIT 1', (err, rows) => {
+        var sqlQuery = sql.query('SELECT NumbersDraw, ConcourseDate, ConcourseNumber FROM blog9895_loterias.lotteryconcourse where lotteryKind = ' + lotteryKind + ' and concoursenumber <> 99999 order by concourseNumber desc LIMIT 1', (err, rows) => {
             console.log('this.sql', this.sql);
             if (err) throw err;
 
