@@ -1,4 +1,3 @@
-const axios = require('axios');
 const Rate = require('../models/Rate');
 
 module.exports = {
