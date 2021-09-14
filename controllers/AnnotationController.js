@@ -4,7 +4,7 @@ module.exports = {
     
     async index(request, response) {
     
-        const rates = await Annotation.find();
+        const rates = await Annotation.findOne({_id: "612d8c8113fabf04c4ad029f"});
         console.log(JSON.stringify(rates));
         
         return response.json(rates);
@@ -38,7 +38,7 @@ module.exports = {
         
         try {
            
-            let rate = await Annotation.updateOne({ text: text } ,function(
+            let rate = await Annotation.findOneAndUpdate({_id: "612d8c8113fabf04c4ad029f"},{ text: text } ,function(
                 err,
                 result
               ) {
