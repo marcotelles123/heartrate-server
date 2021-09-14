@@ -12,7 +12,7 @@ routes.get('/videos', VideosController.index);
 routes.post('/videos', VideosController.store);
 routes.delete('/videos/:id', VideosController.delete);
 routes.get('/annotation', AnnotationController.index);
-routes.patch('/annotation', AnnotationController.update);
+routes.put('/annotation', AnnotationController.update);
 routes.post('/annotation', AnnotationController.create);
 routes.post('/lottery', LoteriasController.calculemyhits);
 module.exports = routes;
