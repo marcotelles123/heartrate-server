@@ -19,8 +19,10 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.9",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.3",
     "surge": "^0.21.3",
     "textract": "^2.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

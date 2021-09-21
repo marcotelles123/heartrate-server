@@ -2,8 +2,11 @@ var express = require('express');
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const cors = require('cors');
-const routes = require('./routes');
 const http = require('http');
+const annotationRoutes = require('./routes/annotation.routes');
+const lotteriesRoutes = require('./routes/lotteries.routes');
+const ratesRoutes = require('./routes/rates.routes');
+const videosRoutes = require('./routes/videos.routes');
 
 const app = express();
 const server = http.Server(app);
@@ -32,10 +35,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
+app.use(annotationRoutes);
+app.use(lotteriesRoutes);
+app.use(ratesRoutes);
+app.use(videosRoutes);
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
-
-app.use(routes);
 
 
 const db = require("./models/index");
