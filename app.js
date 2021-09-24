@@ -30,10 +30,10 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
 app.options('*', cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
 
 app.use(annotationRoutes);
 app.use(lotteriesRoutes);
@@ -41,7 +41,6 @@ app.use(ratesRoutes);
 app.use(videosRoutes);
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
-
 
 const db = require("./models/index");
 const Role = db.role;
