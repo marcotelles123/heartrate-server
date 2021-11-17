@@ -1,5 +1,3 @@
-const Rate = require('../models/rate.model');
-
 module.exports = {
     async index(request, response) {
         const rates = await Rate.find().sort({ date: 'desc' });

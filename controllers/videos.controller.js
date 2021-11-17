@@ -1,5 +1,5 @@
 const axios = require('axios');
-const Videos = require('../models/Videos');
+const Videos = require('../models/videos.model');
 
 module.exports = {
     async index(request, response) {
