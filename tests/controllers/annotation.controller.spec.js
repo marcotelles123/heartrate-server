@@ -7,25 +7,16 @@ beforeAll(async () => {
     token = response.body.accessToken;
 });
 
-describe("Test the root path", () => {
+describe("Test Annotation controller", () => {
     test('GET - Should get annotation', async() => {
         const response = await request(app.server)
             .get("/annotation")
             .set('x-access-token', token);
         expect(response.status).toBe(200);
     }, 28000);
-
-    test('GET - Should get annotation 2', async() => {
-        const response = await request(app.server)
-            .get("/annotation")
-            .set('x-access-token', token);
-        expect(response.status).toBe(200);
-    }, 28000);
-
 });
 
 afterAll(async () => {
-    console.log("afterAll");
     app.mongoose.connection.close();
     app.server.close();
 });
