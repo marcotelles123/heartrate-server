@@ -1,5 +1,4 @@
 var express = require('express');
-const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const cors = require('cors');
 const http = require('http');
@@ -80,6 +79,28 @@ function initial() {
             });
         }
     });
-}
+};
+
+async function dispose(){
+    try {
+        console.log("disposing")
+        const { todos } = mongoose.connection.collections;
+        // Collection is being dropped.
+        await todos.drop()
+        // Connection to Mongo killed.
+        await mongoose.disconnect();
+        // Server connection closed.
+        await server.close();
+      } catch (error) {
+        console.log(`
+          You did something wrong dummy!
+          ${error}
+        `);
+        throw error;
+      }
+
+};
 
 server.listen(process.env.PORT || 3334);
+
+module.exports = {server, mongoose };
