@@ -13,7 +13,6 @@ describe("Test Lottteries controller", () => {
             .post("/lottery")
             .send({ "lotterykind": "1", "drawnumbers": ["1","2","4","5"], "concoursenumber": "123" });
 
-        console.log(response.body);
         expect(response.status).toBe(200);
 
         expect(response.body.hits).toEqual(expect.any(Array));
