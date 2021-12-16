@@ -6,6 +6,7 @@ const annotationRoutes = require('./routes/annotation.routes');
 const lotteriesRoutes = require('./routes/lotteries.routes');
 const ratesRoutes = require('./routes/rates.routes');
 const videosRoutes = require('./routes/videos.routes');
+const billsRoutes = require('./routes/bills.routes');
 
 const app = express();
 const server = http.Server(app);
@@ -37,6 +38,7 @@ app.use(annotationRoutes);
 app.use(lotteriesRoutes);
 app.use(ratesRoutes);
 app.use(videosRoutes);
+app.use(billsRoutes);
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 

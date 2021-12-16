@@ -7,16 +7,17 @@ beforeAll(async () => {
     token = response.body.accessToken;
 });
 
-describe("Test Rates controller", () => {
-    test('GET - Should get rates', async() => {
+describe("Test Bills controller", () => {
+    test('GET - Should get bills', async() => {
         const response = await request(app.server)
-            .get("/rates")
+            .get("/bills")
             .set('x-access-token', token);
             
         expect(response.status).toBe(200);
-        expect(response.body[0].rates).toEqual(expect.any(Array));
-        expect(response.body[0].obs).toEqual(expect.any(Array));
-        expect(response.body[0].date).toEqual(expect.any(String));
+        expect(response.body[0].bill).toEqual(expect.any(String));
+        expect(response.body[0].dueDate).toEqual(expect.any(String));
+        expect(response.body[0].dueDateFormatted).toEqual(expect.any(String));
+        expect(response.body[0].paid).toEqual(expect.any(Boolean));
     }, 28000);
 });
 
