@@ -1,14 +1,14 @@
-const Annotation = require('../models/Annotation');
+const Annotation = require('../models/annotation.model');
 
 module.exports = {
     
     async index(request, response) {
     
         const rates = await Annotation.findOne({_id: "612d8c8113fabf04c4ad029f"});
-        console.log(JSON.stringify(rates));
         
         return response.json(rates);
     },
+
     async create(request, response) {
        
         const { text } = request.body;
