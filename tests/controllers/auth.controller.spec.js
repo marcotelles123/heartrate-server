@@ -15,7 +15,7 @@ describe("Test Auth controller", () => {
         const response = await request(app.server)
             .post("/api/auth/signin")
             .send({ "username": "marcotelles123", "password": "1" });
-        console.log(response.error);
+        
         expect(response.error.status).toBe(401);
         expect(response.error.text).toMatch(/(Invalid Password!)/i)
     }, 28000);
