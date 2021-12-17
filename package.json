@@ -17,6 +17,7 @@
     "express": "^4.17.1",
     "jsonexport": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
     "mongoose": "^5.13.9",
     "mysql": "^2.18.1",
     "surge": "^0.21.3",

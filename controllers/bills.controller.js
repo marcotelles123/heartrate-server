@@ -1,30 +1,41 @@
+const BillModel = require('../models/bill.model');
+var moment = require('moment');
+
 module.exports = {
     async index(request, response) {
-        const rates = await Rate.find().sort({ date: 'desc' });
-        console.log(JSON.stringify(rates));
-        return response.json(rates);
+        try {
+            const bills = await BillModel.find().sort({ dueDate: 'desc' });
+            bills.forEach(element => {
+                element.dueDateFormatted = moment(element.dueDate).format('DD/MM/YYYY');
+            });
+            console.log(JSON.stringify(bills));
+            return response.json(bills);
+        } catch (e) {
+            return e;
+        }
     },
 
     async delete(request, response) {
-        const rates = await Rate.findByIdAndRemove(request.params.id, function (err, output) {
+        console.log(request.params.id);
+        const bills = await BillModel.findByIdAndRemove(request.params.id, function (err, output) {
             if (err) {
                 return next(err);
             }
-            
+
             response.send(output === 1 ? { msg: "success" } : { msg: "error" });
         });
     },
 
     async store(request, response) {
-        const { rates, obs } = request.body;
-        
+        const { bill, dueDate, paid } = request.body;
+
         try {
-           
+
             let user = null;
-            let rate = await Rate.create({
-                rates,
-                date: Date.now(),
-                obs: obs,
+            let billDb = await BillModel.create({
+                bill,
+                dueDate,
+                paid,
             }, function (err, result) {
                 if (err) {
                     // it failed
