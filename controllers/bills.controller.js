@@ -8,7 +8,7 @@ module.exports = {
             bills.forEach(element => {
                 element.dueDateFormatted = moment(element.dueDate).format('DD/MM/YYYY');
             });
-            console.log(JSON.stringify(bills));
+
             return response.json(bills);
         } catch (e) {
             return e;
@@ -16,7 +16,6 @@ module.exports = {
     },
 
     async delete(request, response) {
-        console.log(request.params.id);
         const bills = await BillModel.findByIdAndRemove(request.params.id, function (err, output) {
             if (err) {
                 return next(err);
@@ -46,6 +45,23 @@ module.exports = {
                     response.json(result)
                     response.send();
                 }
+            });
+        } catch (e) {
+            return e;
+        }
+    },
+
+    async update(request, response) {
+        try {
+            var { paid } = request.body;
+            var query = { _id: request.params.id };
+            var newvalues = { $set: { paid: paid } };
+            const bills = await BillModel.updateOne(query, newvalues, function (err, output) {
+                if (err) {
+                    return next(err);
+                }
+
+                response.send(output.ok === 1 ? { msg: "success" } : { msg: "error" });
             });
         } catch (e) {
             return e;
