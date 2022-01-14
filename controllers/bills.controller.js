@@ -1,13 +1,11 @@
 const BillModel = require('../models/bill.model');
 var moment = require('moment');
+const { defaultFormat } = require('moment');
 
 module.exports = {
     async index(request, response) {
         try {
-            const bills = await BillModel.find().sort({ dueDate: 'desc' });
-            bills.forEach(element => {
-                element.dueDateFormatted = moment(element.dueDate).format('DD/MM/YYYY');
-            });
+            const bills = await BillModel.find().sort({ bill: 'asc' });
 
             return response.json(bills);
         } catch (e) {
@@ -26,15 +24,24 @@ module.exports = {
     },
 
     async store(request, response) {
-        const { bill, dueDate, paid } = request.body;
+        const { bill, dueDate, dueNumber } = request.body;
 
         try {
+
+            var dueLimit = null;
+            if (dueNumber){
+                var datetime = new Date();
+                datetime.setMonth(datetime.getMonth() + dueNumber);
+                dueLimit = datetime;
+            }
+
 
             let user = null;
             let billDb = await BillModel.create({
                 bill,
                 dueDate,
-                paid,
+                dueLimit: dueLimit,
+                paid: false,
             }, function (err, result) {
                 if (err) {
                     // it failed
