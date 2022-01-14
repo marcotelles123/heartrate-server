@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const BillSchema = new mongoose.Schema({
     bill: String,
-    dueDate: Date,
-    dueDateFormatted: String,
+    dueDate: Number,
+    dueLimit: Date,
     paid: Boolean,
 }, {strict: false});
 
