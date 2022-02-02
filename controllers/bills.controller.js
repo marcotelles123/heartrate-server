@@ -62,7 +62,8 @@ module.exports = {
         try {
             var { paid } = request.body;
             var query = { _id: request.params.id };
-            var newvalues = { $set: { paid: paid } };
+            var datetime = new Date();
+            var newvalues = { $set: { paid: paid, dueMonth: datetime.getMonth() + 1 } };
             const bills = await BillModel.updateOne(query, newvalues, function (err, output) {
                 if (err) {
                     return next(err);
