@@ -16,6 +16,7 @@ describe("Test Bills controller", () => {
         expect(response.status).toBe(200);
         expect(response.body[0].bill).toEqual(expect.any(String));
         expect(response.body[0].dueDate).toEqual(expect.any(Number));
+        expect(response.body[0].lastPaidMonth).toEqual(expect.any(Number));
         expect(response.body[0].paid).toEqual(expect.any(Boolean));
     }, 28000);
 });
