@@ -21,11 +21,12 @@ module.exports = {
         const { rates, obs } = request.body;
         
         try {
-           
+            var d =  Date.now();
+            d.setHours(d.getHours() - 2)
             let user = null;
             let rate = await Rate.create({
                 rates,
-                date: Date.now(),
+                date: d,
                 obs: obs,
             }, function (err, result) {
                 if (err) {
