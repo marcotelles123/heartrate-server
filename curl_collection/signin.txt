@@ -1,0 +1,9 @@
+curl -X POST \
+  http://127.0.0.1:3334/api/auth/signin \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: e5c2ed4f-3cdd-d62c-a80e-fbe70671a168' \
+  -d '{
+	"username":"marcotelles123",
+	"password": ""
+}'
