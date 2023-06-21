@@ -7,6 +7,7 @@ const lotteriesRoutes = require('./routes/lotteries.routes');
 const ratesRoutes = require('./routes/rates.routes');
 const videosRoutes = require('./routes/videos.routes');
 const billsRoutes = require('./routes/bills.routes');
+const pmtRoutes = require('./routes/pmt.routes');
 
 const app = express();
 const server = http.Server(app);
@@ -39,6 +40,7 @@ app.use(lotteriesRoutes);
 app.use(ratesRoutes);
 app.use(videosRoutes);
 app.use(billsRoutes);
+app.use(pmtRoutes);
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 
