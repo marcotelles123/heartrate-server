@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const sql = require("./../../loterias/db");
+const sql = require("../db");
 
 const connection = mysql.createConnection({
     host: 'br496.hostgator.com.br',
@@ -8,10 +8,6 @@ const connection = mysql.createConnection({
     password: 'P@ssw0rd',
     database: 'blog9895_loterias'
 });
-
-
-
-
 
 module.exports = {
     async getDrawsByConcourseNumber(concourseNumber, lotteryKind, callback) {
