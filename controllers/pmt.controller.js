@@ -20,7 +20,10 @@ module.exports = {
   },
   async update(request, response) {
     try {
-      const { popcorn, enemy, came, gameate } = request.body;
+
+      const { popcorn, enemy, came, gamedate } = request.body;
+
+ 
       let updateResult = 0;
 
       if (popcorn.length > 0)
