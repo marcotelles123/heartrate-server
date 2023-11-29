@@ -1,4 +1,6 @@
+
 const sql = require("../PMT/db");
+
 
 module.exports = {
   async getPlayers() {
